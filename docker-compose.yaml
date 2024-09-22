@@ -1,0 +1,28 @@
+services:
+
+  wallets-api:
+    image: wallets
+    entrypoint: ./entrypoint.sh
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:password0@wallets-db:5432/wdb
+    depends_on:
+      - wallets-db
+
+  wallets-db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: wdb
+      POSTGRES_PASSWORD: password0
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:

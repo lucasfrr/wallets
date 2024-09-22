@@ -1,0 +1,12 @@
+wallets/__pycache__/
+tests/__pycache__/
+migrations/__pycache__/
+migrations/versions/__pycache__
+wallets/routers/__pycache__/
+
+.coverage
+.python-version
+.ruff-cache
+htmlcov
+database.db
+.env
